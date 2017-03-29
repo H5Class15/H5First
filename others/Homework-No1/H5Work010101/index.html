@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开始BY cy</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url(bg2.jpg) no-repeat;
+            background-size: 100%;
+        }
+        .header{
+            background-color: steelblue;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .header b{
+            float: left;
+            margin-left: 100px;
+            color: #fff;
+            font-family: "Glyphicons Halflings";
+            font-size: large;
+        }
+        .header a{
+            float: right;
+            color: #fff;
+            font-family: "Glyphicons Halflings";
+            font-size: large;
+        }
+        .header div{
+            float: left;
+            color: #ffffff;
+            text-align: center;
+            font-family: "Humnst777 Cn BT";
+            width: 800px;
+            margin-left: 240px;
+            font-size: large;
+        }
+        .header span{
+            margin: 0 50px;
+            font-weight: bold;
+        }
+        .header span:hover{
+            color: #000;
+        }
+        .text{
+            width: 600px;
+            font-size: large;
+            color: #ffffff;
+            margin: 100px auto 0 auto;
+            background-color: #fff;
+            color:#000;
+            display: none;
+        }
+        .foot{
+            position: absolute;
+            bottom: 0;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: steelblue;
+            width: 100%;
+            color: #ffffff;
+            font-size: large;
+        }
+    </style>
+    <link rel="stylesheet" href="jscss/bootstrap.min.css" type="text/css" />
+    <script>
+        function changecolor(i) {
+            for(var a=1;a<5;a++) {
+                if (a==i) {
+                    document.getElementById(a).style.display="table";
+                }
+                else
+                    document.getElementById(a).style.display="none";
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <b><img src="logo.png" width="25px" height="25px"> Cy</b>
+    <div>
+        <span onmouseover="changecolor(1)">用户管理</span>
+        <span onmouseover="changecolor(2)">角色管理</span>
+        <span onmouseover="changecolor(3)">权限管理</span>
+        <span onmouseover="changecolor(4)">授权管理</span>
+    </div>
+    <a>登录</a>
+</div>
+<div class="text" id="1">
+    用户管理
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>昵称</th>
+            <th>密码</th>
+            <th>状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>cy</td>
+            <td>666</td>
+            <td>可用</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text" id="2">
+    角色管理
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>昵称</th>
+            <th>密码</th>
+            <th>状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>欧阳思成</td>
+            <td>666</td>
+            <td>可用</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text" id="3">
+    权限管理
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>昵称</th>
+            <th>密码</th>
+            <th>权限等级</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>谢文奇</td>
+            <td>666</td>
+            <td>四级</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text" id="4">
+    授权管理
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>昵称</th>
+            <th>密码</th>
+            <th>权限</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>叶剑忠</td>
+            <td>666</td>
+            <td>管理员</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="foot">
+    By&nbsp&nbsp&copy&nbspCy
+</div>
+</body>
+</html>
