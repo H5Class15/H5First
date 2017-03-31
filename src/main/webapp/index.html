@@ -1,219 +1,212 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
-
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <style>
-        #main{
-            margin: 0;
-            padding: 0;
-            height: 700px;
-            background-image: url("images/body_bg.gif");
-        }
-        #qiPan{
-            padding: 5px 0 0 5px;
-            margin-top: 40px;
-            width: 622px;
-            height: 622px;
-            background-image: url("images/qipan_bg.png");
-        }
-        .rowCell{
-            width: 100%;
-        }
-        .cell{
-            width: 61px;
-            height: 61px;
-            float: left;
-        }
-        /*background-image: url("images/corner_01_a.gif");*/
-    </style>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
     <script>
+        //文档初始化
         $(function(){
-            var CHESS_BLACK="c";
-            var CHESS_WHITE="b";
-            var CHESS_NONE="a";
-            var CHESS_TIP="d";
-            var TURN_BLACK="black";
-            var TURN_WHITE="white";
-            var POSITION_LEFT_UP=1;
-            var POSITION_UP=2;
-            var POSITION_RIGHT_UP=3;
-            var POSITION_RIGHT=4;
-            var POSITION_RIGHT_DOWN=5;
-            var POSITION_DOWN=6;
-            var POSITION_LEFT_DOWN=7;
-            var POSITION_LEFT=8;
-            var turn_flag=TURN_BLACK;
+            //$("p").eq(1);==$("p:eq(1)");
+            //$("p").hasClass("abc");==$("p.abc");
 
-            for(var i=0;i<10;i++){
-                var row=$("<div></div>").addClass("rowCell");
-                for(var j=0;j<10;j++){
-                    var cell=$("<div></div>").addClass("cell");
-                    row.append(cell);
-                }
-                $("#qiPan").append(row);
 
-            }
-            $("div.rowCell:first>div.cell:first").css("background-image","url('images/corner_01_a.gif')");
-            $("div.rowCell:first>div.cell:last").css("background-image","url('images/corner_02_a.gif')");
-            $("div.rowCell:last>div.cell:first").css("background-image","url('images/corner_04_a.gif')");
-            $("div.rowCell:last>div.cell:last").css("background-image","url('images/corner_03_a.gif')");
-            $("div.rowCell:first>div.cell:not(:first,:last)").css("background-image","url('images/side_01_a.gif')");
-            $("div.rowCell:last>div.cell:not(:first,:last)").css("background-image","url('images/side_03_a.gif')");
-            $("div.rowCell:not(:first,:last)>div.cell:first-child").css("background-image","url('images/side_04_a.gif')");
-            $("div.rowCell:not(:first,:last)>div.cell:last-child").css("background-image","url('images/side_02_a.gif')");
-            $("div.rowCell:not(:first,:last)>div.cell:not(:first-child,:last-child)").css("background-image","url('images/line_a.gif')");
+            //绑定事件
+            /*$("#test1").click(function(){
+                //改变样式
+                //$("#test").css("background-color","red");
+                //找到自己
+                //$(this).css("background-color","red");
+                //改变属性
+                //$("img").attr("src","images/corner_01_b.gif");
+                //$(this).addClass("btn").addClass("btn-primary");
+                $(".navbar-brand").text("你好");
 
-            /**
-             * 点击对应的回调函数
-             */
-            var click_handle=function(){
-                if(turn_flag==TURN_BLACK){
-                    setChess($(this),CHESS_BLACK);
-                }
-                else{
-                    setChess($(this),CHESS_WHITE);
-                }
-                getCellByPosition($(this),POSITION_LEFT_UP);
-                nextTurn();
-            };
-            $("div.cell").click(click_handle);
-
-            function nextTurn(){
-                if(turn_flag==TURN_BLACK){
-                    turn_flag=TURN_WHITE;
-                }
-                else{
-                    turn_flag=TURN_BLACK;
-                }
-            }
-            /**
-             * 设置棋子
-             * @param cell  格子对象
-             * @param color 棋子颜色
-             */
-            function setChess(cell,color){
-                var bg=cell.css("background-image");
-                var a=bg.substr(0,bg.indexOf(".")-1);
-                var b=bg.substr(bg.indexOf("."));
-                cell.css("background-image",a+color+b);
-            }
-
-            /**
-             * 判断棋子
-             * @param cell  格子对象
-             * @param color 棋子颜色
-             */
-            function chessEqual(cell,color){
-                var bg=cell.css("background-image");
-                var colorCell=bg.substr(bg.indexOf(".")-1,bg.indexOf("."));
-                return color==colorCell;
-            }
-
-            /**
-             * 返回对应方向的Cell
-             * @param cell  自己
-             * @param position  方向
-             * @returns 对应方向的Cell
-             */
-            function getCellByPosition(cell,position){
-                switch (position){
-                    case POSITION_LEFT_UP:{
-                        //获得所在行元素
-                        var myParent=cell.parent();
-                        //获得自己在行元素中的位置
-                        var myIndex=myParent.children().index(cell);
-                        //获得行元素上面的那个行元素
-                        var upParent=myParent.prev();
-                        //获得左上的cell
-                        var targetCell=upParent.children(":eq("+(myIndex-1)+")");
-                        return targetCell;
-                    }
-                    case POSITION_UP:{
-                        //获得所在行元素
-                        var myParent=cell.parent();
-                        //获得自己在行元素中的位置
-                        var myIndex=myParent.children().index(cell);
-                        //获得行元素上面的那个行元素
-                        var upParent=myParent.prev();
-                        //获得左上的cell
-                        var targetCell=upParent.children(":eq("+myIndex+")");
-                        return targetCell;
-                    }
-                    case POSITION_RIGHT_UP:{
-                        //获得所在行元素
-                        var myParent=cell.parent();
-                        //获得自己在行元素中的位置
-                        var myIndex=myParent.children().index(cell);
-                        //获得行元素上面的那个行元素
-                        var upParent=myParent.prev();
-                        //获得左上的cell
-                        var targetCell=upParent.children(":eq("+(myIndex+1)+")");
-                        return targetCell;
-                    }
-                    case POSITION_RIGHT:{
-                        return cell.next();
-                    }
-                    case POSITION_RIGHT_DOWN:{
-                        //获得所在行元素
-                        var myParent=cell.parent();
-                        //获得自己在行元素中的位置
-                        var myIndex=myParent.children().index(cell);
-                        //获得行元素上面的那个行元素
-                        var upParent=myParent.next();
-                        //获得左上的cell
-                        var targetCell=upParent.children(":eq("+(myIndex+1)+")");
-                        return targetCell;
-                    }
-                    case POSITION_DOWN:{
-                        //获得所在行元素
-                        var myParent=cell.parent();
-                        //获得自己在行元素中的位置
-                        var myIndex=myParent.children().index(cell);
-                        //获得行元素上面的那个行元素
-                        var upParent=myParent.next();
-                        //获得左上的cell
-                        var targetCell=upParent.children(":eq("+myIndex+")");
-                        return targetCell;
-                    }
-                    case POSITION_LEFT_DOWN:{
-                        //获得所在行元素
-                        var myParent=cell.parent();
-                        //获得自己在行元素中的位置
-                        var myIndex=myParent.children().index(cell);
-                        //获得行元素上面的那个行元素
-                        var upParent=myParent.next();
-                        //获得左上的cell
-                        var targetCell=upParent.children(":eq("+(myIndex-1)+")");
-                        return targetCell;
-                    }
-                    case POSITION_LEFT:{
-                        return cell.prev();
-                    }
-                }
-            }
+            });
+            $("#test2").click(function(){
+                //移除类样式
+                $("#test1").removeClass("btn btn-primary");
+                //设置值
+                $("#txt1").val("改了");
+                $("#txt2").text("又改了");
+                $("#txt3").html("改改改");
+            });*/
+            $("#mainBody>div.panel").hide();
+            $("div.panel:eq(0)").show();
+            $("#btnLogin").click(function(){
+                $(".navbar-brand").text("你好");
+            });
+            $("ul.navbar-nav>li").click(function(){
+                $(this).siblings(".active").removeClass("active");
+                $(this).addClass("active");
+                var count=$(this).parent().children().index($(this));
+                $("#mainBody>div.panel").hide();
+                $("div.panel:eq("+count+")").show();
+            });
         });
-
     </script>
-
-
 </head>
 <body>
-<div class="container-fluid" id="main">
-    <div id="qiPan" class="container">
-    </div>
-</div>
+<!--
+<button id="test1" >测试1</button>
+<button id="test2" >测试2</button>
+<input id="txt1" value="请输入点什么">
+<img>
+<h5 id="txt2"><span><i>一段文字</i></span></h5>
+<h5 id="txt3"><i>一段文字一段文字</i></h5>-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-heart"></span>
+            </a>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">用户管理</a></li>
+                <li><a href="#">角色管理</a></li>
+                <li><a href="#">权限管理</a></li>
+                <li><a href="#">授权管理</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="btnLogin" href="#">登录</a></li>
+                <!--<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>-->
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div id="mainBody" class="container">
+    <div id="panelUser" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">用户信息</h3>
+        </div>
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>用户编号</td>
+                <th>用户姓名</td>
+                <th>用户年龄</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+        </table>
+    </div>
+    <div id="panelRole" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">角色信息</h3>
+        </div>
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>角色编号</td>
+                <th>角色名称</td>
+                <th>部门名</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+        </table>
+    </div>
+    <div id="panelRight" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">权限信息</h3>
+        </div>
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>用户编号</td>
+                <th>用户姓名</td>
+                <th>用户年龄</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+        </table>
+    </div>
+    <div id="panelAuthorization" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">授权信息</h3>
+        </div>
+        <table class="table table-bordered table-responsive">
+            <tr>
+                <th>用户编号</td>
+                <th>用户姓名</td>
+                <th>用户年龄</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
 
 </body>
 </html>
