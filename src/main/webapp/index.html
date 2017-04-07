@@ -10,6 +10,7 @@
     <script>
         //文档初始化
         $(function(){
+
             //$("p").eq(1);==$("p:eq(1)");
             //$("p").hasClass("abc");==$("p.abc");
 
@@ -46,6 +47,41 @@
                 $("#mainBody>div.panel").hide();
                 $("div.panel:eq("+count+")").show();
             });
+            /*$("ul.navbar-nav li").each(function(index){
+                $(this).text(index);
+            });*/
+            /*var list=$("ul.navbar-nav li");
+            for(var i=0;i<list.size();i++){
+                list.get(i).text(i);
+            }*/
+            //$("select>option:selected").val();
+            var getUserList=function(){
+                var tempArr=[
+                    {id:1,userName:"柳明1",userId:"liuming1",password:"123456",age:31},
+                    {id:1,userName:"柳明2",userId:"liuming2",password:"123456",age:32},
+                    {id:1,userName:"柳明3",userId:"liuming3",password:"123456",age:33}
+                ];
+                return tempArr;
+            };
+            var userList=getUserList();
+            var tr=$("<tr></tr>")
+                .append($("<td></td>"))
+                .append($("<td></td>"))
+                .append($("<td></td>"))
+                .append($("<td></td>"))
+                .append($("<td></td>")
+                    .append($("<button></button>").text("修改").addClass("btn btn-primary btn-xs"))
+                    .append($("<button></button>").text("删除").addClass("btn btn-primary btn-xs pull-right"))
+                );
+            for(var i=0;i<userList.length;i++){
+                var user=userList[i];
+                var tempTr=tr.clone();
+                tempTr.find("td:eq(0)").text(user.id);
+                tempTr.find("td:eq(1)").text(user.userName);
+                tempTr.find("td:eq(2)").text(user.userId);
+                tempTr.find("td:eq(3)").text(user.age);
+                $("#panelUser table").append(tempTr);
+            }
         });
     </script>
 </head>
@@ -103,24 +139,11 @@
         </div>
         <table class="table table-bordered table-responsive">
             <tr>
-                <th>用户编号</td>
+                <th width="50">编号</td>
+                <th width="100">用户名</td>
                 <th>用户姓名</td>
-                <th>用户年龄</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>111</td>
-                <td>111</td>
+                <th width="100">用户年龄</td>
+                <th width="100" class="text-center">操作</td>
             </tr>
         </table>
     </div>
