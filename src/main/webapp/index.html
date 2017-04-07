@@ -7,83 +7,7 @@
     <link href="css/main.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script>
-        //文档初始化
-        $(function(){
-
-            //$("p").eq(1);==$("p:eq(1)");
-            //$("p").hasClass("abc");==$("p.abc");
-
-
-            //绑定事件
-            /*$("#test1").click(function(){
-                //改变样式
-                //$("#test").css("background-color","red");
-                //找到自己
-                //$(this).css("background-color","red");
-                //改变属性
-                //$("img").attr("src","images/corner_01_b.gif");
-                //$(this).addClass("btn").addClass("btn-primary");
-                $(".navbar-brand").text("你好");
-
-            });
-            $("#test2").click(function(){
-                //移除类样式
-                $("#test1").removeClass("btn btn-primary");
-                //设置值
-                $("#txt1").val("改了");
-                $("#txt2").text("又改了");
-                $("#txt3").html("改改改");
-            });*/
-            $("#mainBody>div.panel").hide();
-            $("div.panel:eq(0)").show();
-            $("#btnLogin").click(function(){
-                $(".navbar-brand").text("你好");
-            });
-            $("ul.navbar-nav>li").click(function(){
-                $(this).siblings(".active").removeClass("active");
-                $(this).addClass("active");
-                var count=$(this).parent().children().index($(this));
-                $("#mainBody>div.panel").hide();
-                $("div.panel:eq("+count+")").show();
-            });
-            /*$("ul.navbar-nav li").each(function(index){
-                $(this).text(index);
-            });*/
-            /*var list=$("ul.navbar-nav li");
-            for(var i=0;i<list.size();i++){
-                list.get(i).text(i);
-            }*/
-            //$("select>option:selected").val();
-            var getUserList=function(){
-                var tempArr=[
-                    {id:1,userName:"柳明1",userId:"liuming1",password:"123456",age:31},
-                    {id:1,userName:"柳明2",userId:"liuming2",password:"123456",age:32},
-                    {id:1,userName:"柳明3",userId:"liuming3",password:"123456",age:33}
-                ];
-                return tempArr;
-            };
-            var userList=getUserList();
-            var tr=$("<tr></tr>")
-                .append($("<td></td>"))
-                .append($("<td></td>"))
-                .append($("<td></td>"))
-                .append($("<td></td>"))
-                .append($("<td></td>")
-                    .append($("<button></button>").text("修改").addClass("btn btn-primary btn-xs"))
-                    .append($("<button></button>").text("删除").addClass("btn btn-primary btn-xs pull-right"))
-                );
-            for(var i=0;i<userList.length;i++){
-                var user=userList[i];
-                var tempTr=tr.clone();
-                tempTr.find("td:eq(0)").text(user.id);
-                tempTr.find("td:eq(1)").text(user.userName);
-                tempTr.find("td:eq(2)").text(user.userId);
-                tempTr.find("td:eq(3)").text(user.age);
-                $("#panelUser table").append(tempTr);
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </head>
 <body>
 <!--
@@ -147,6 +71,28 @@
             </tr>
         </table>
     </div>
+    <div id="panelUpdate" class="panel panel-default">
+        <form class="form-inline">
+            <div class="form-group">
+                <label >编号</label>
+                <input type="text" name="id" class="form-control" style="width: 50px;">
+            </div>
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="email" name="userId" class="form-control"style="width: 150px;">
+            </div>
+            <div class="form-group">
+                <label>用户姓名</label>
+                <input type="email" name="userName" class="form-control" style="width: 150px;">
+            </div>
+            <div class="form-group">
+                <label>年龄</label>
+                <input type="email" name="age" class="form-control" style="width: 100px;">
+            </div>
+            <button id="btnSave" type="submit" class="btn btn-primary btn-xs">保存</button>
+        </form>
+    </div>
+
     <div id="panelRole" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">角色信息</h3>
