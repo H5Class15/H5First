@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS</title>
+    <script src="js/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
+    <!--<script src="js/angularjs.min.js"></script>-->
+    <script src="js/angularMain.js"></script>
+</head>
+<body ng-controller="myCtrl">
+    <!--<div ng-app>
+        <p>名字 : <input type="text" ng-model="name"></p>
+        <h1>Hello {{name}}</h1>
+    </div>-->
+    <!--<div ng-app ng-init="firstName='John'">
+
+        <p>姓名为 <span ng-bind="firstName"></span></p>
+
+    </div>-->
+    <!--<div ng-app="myApp" ng-controller="myCtrl">
+
+        名: <input type="text" ng-model="firstName"><br>
+        姓: <input type="text" ng-model="lastName"><br>
+        <br>
+        姓名: {{firstName + " " + lastName}}
+
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.firstName= "John";
+            $scope.lastName= "Doe";
+        });
+    </script>-->
+    <button ng-click="abc()">点我</button>
+    <table>
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+        <tr ng-repeat="user in users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+        </tr>
+    </table>
+</body>
+</html>

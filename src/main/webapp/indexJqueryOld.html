@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -7,10 +7,16 @@
     <link href="css/main.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="https://cdn.bootcss.com/angular.js/1.6.4/angular.min.js"></script>
-    <script src="js/angularIndex.js"></script>
+    <script src="js/main.js"></script>
 </head>
-<body ng-controller="myCtrl">
+<body>
+<!--
+<button id="test1" >测试1</button>
+<button id="test2" >测试2</button>
+<input id="txt1" value="请输入点什么">
+<img>
+<h5 id="txt2"><span><i>一段文字</i></span></h5>
+<h5 id="txt3"><i>一段文字一段文字</i></h5>-->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,12 +31,14 @@
                 <span class="glyphicon glyphicon-heart"></span>
             </a>
         </div>
-        <!--{true: 'active', false: 'inactive'}[isActive]
-        {'selected': isSelected, 'car': isCar}-->
+
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li ng-repeat="nav in navList" ng-class="{'active': currentNav==$index}" ng-click="navChange($index)" ><a href="#">{{nav.title}}</a></li>
+                <li class="active"><a href="#">用户管理</a></li>
+                <li><a href="#">角色管理</a></li>
+                <li><a href="#">权限管理</a></li>
+                <li><a href="#">授权管理</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a id="btnLogin" href="#">登录</a></li>
@@ -49,7 +57,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div id="mainBody" class="container">
-    <div id="panelUser" ng-show="currentNav==0" class="panel panel-default">
+    <div id="panelUser" class="panel panel-default">
         <div class="panel-heading">
             &nbsp;
             <h3 class="panel-title pull-left">用户信息</h3>
@@ -65,7 +73,7 @@
             </tr>
         </table>
     </div>
-    <div id="panelRole" ng-show="currentNav==1" class="panel panel-default">
+    <div id="panelRole" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">角色信息</h3>
         </div>
@@ -92,7 +100,7 @@
             </tr>
         </table>
     </div>
-    <div id="panelRight" ng-show="currentNav==2" class="panel panel-default">
+    <div id="panelRight" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">权限信息</h3>
         </div>
@@ -119,7 +127,7 @@
             </tr>
         </table>
     </div>
-    <div id="panelAuthorization" ng-show="currentNav==3" class="panel panel-default">
+    <div id="panelAuthorization" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">授权信息</h3>
         </div>
@@ -146,7 +154,7 @@
             </tr>
         </table>
     </div>
-    <div id="panelUpdate" ng-show="updateShow" class="panel panel-default">
+    <div id="panelUpdate" class="panel panel-default">
         <form class="form-inline">
             <div class="form-group">
                 <label >编号</label>
