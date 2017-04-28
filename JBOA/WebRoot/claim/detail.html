@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>北大青鸟办公自动化管理系统</title>
+		<link href="../css/style.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<div class="top">
+			<div class="global-width">
+				<img src="../images/logo.gif" class="logo" />
+			</div>
+		</div>
+		<div class="status">
+			<div class="global-width">
+				<span class="usertype">【登录角色：部门经理】</span>董平你好！欢迎访问青鸟办公管理系统！
+			</div>
+		</div>
+		<div class="main">
+			<div class="global-width">
+
+				<div class="nav" id="nav">
+					<div class="t"></div>
+					<dl class="open">
+						<dt
+							onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">
+							报销单管理
+						</dt>
+						<dd>
+							<a href="index.html" target="_self">添加报销单</a>
+						</dd>
+						<dd>
+							<a href="list.html" target="_self">审核报销单</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt
+							onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">
+							我要采购
+						</dt>
+						<dd>
+							信心收件箱
+						</dd>
+						<dd>
+							信心发件箱
+						</dd>
+					</dl>
+					<dl>
+						<dt
+							onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">
+							我要销售
+						</dt>
+						<dd>
+							信心收件箱
+						</dd>
+						<dd>
+							信心发件箱
+						</dd>
+					</dl>
+					<dl>
+						<dt
+							onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">
+							信息中心
+						</dt>
+						<dd>
+							信心收件箱
+						</dd>
+						<dd>
+							信心发件箱
+						</dd>
+					</dl>
+				</div>
+				<div class="action">
+					<div class="t">
+						增加报销单
+					</div>
+					<div class="pages">
+						<!--增加报销单 区域 开始-->
+						<table width="90%" border="0" cellspacing="0" cellpadding="0"
+							class="addform-base">
+							<caption>
+								基本信息
+							</caption>
+							<tr>
+								<td width="36%">
+									填写人：董平
+								</td>
+								<td width="64%">
+									填报时间：09年12月 16：30
+								</td>
+							</tr>
+							<tr>
+								<td>
+									总金额：￥1256.3
+								</td>
+								<td>
+									状态：新创建
+								</td>
+							</tr>
+						</table>
+						<p>
+							&nbsp;
+						</p>
+						<table width="90%" border="0" cellspacing="0" cellpadding="0"
+							class="addform-base">
+							<tr>
+								<td>
+									项目
+								</td>
+								<td>
+									金额
+								</td>
+								<td>
+									费用
+								</td>
+							</tr>
+							<tr>
+								<td>
+									市内交通
+								</td>
+								<td>
+									￥78.3
+								</td>
+								<td>
+									到客户取合同
+								</td>
+							</tr>
+							<tr>
+								<td>
+									餐费
+								</td>
+								<td>
+									￥156.0
+								</td>
+								<td>
+									午餐补助
+								</td>
+							</tr>
+						</table>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							-------------------------------------------------------------------------------
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<table width="90%" border="0" cellspacing="0" cellpadding="0"
+							class="addform-base">
+							<tr>
+								<td width="27%">
+									遥远（部门经理）
+								</td>
+								<td width="20%">
+									09月16日
+								</td>
+								<td width="15%">
+									17：23
+								</td>
+								<td width="38%">
+									审核：
+									<span class="red"><strong>通过</strong>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									同意
+								</td>
+								<td>
+									&nbsp;
+								</td>
+								<td>
+									&nbsp;
+								</td>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td>
+									伊评（总经理）
+								</td>
+								<td>
+									08月16日
+								</td>
+								<td>
+									16：26
+								</td>
+								<td>
+									审核：
+									<span class="purple"><strong>拒绝</strong>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									9月报销总额超出预算
+								</td>
+								<td>
+									&nbsp;
+								</td>
+								<td>
+									&nbsp;
+								</td>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+						</table>
+						<p>
+							&nbsp;
+						</p>
+						<table width="90%" border="0" cellspacing="0" cellpadding="0"
+							class="addform-base">
+							<tr>
+								<td>
+									审核意见：
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+								</td>
+							</tr>
+							<!--表单提交行-->
+							<tr>
+								<td colspan="4" class="submit">
+									<input type="submit" name="button" id="button" value="保 存"
+										class="submit_01" />
+									<input type="submit" name="button" id="button" value="保存并提交"
+										class="submit_01" />
+									<input type="submit" name="button" id="button" value="添加明细"
+										class="submit_01" />
+								</td>
+							</tr>
+						</table>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<p>
+							&nbsp;
+						</p>
+						<!--增加报销单 区域 结束-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="copyright">
+			Copyright &nbsp; &copy; &nbsp; 北大青鸟
+		</div>
+
+	</body>
+</html>
